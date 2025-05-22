@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Reviews</title>
+    <link rel="stylesheet" href="review.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1>User Reviews</h1>
+            <p>Share your thoughts and read what others are saying.</p>
+        </header>
+
+        <!-- Review Form Section -->
+        <section class="review-form">
+            <h2>Write a Review</h2>
+            <form id="reviewForm">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="rating">Rating:</label>
+                <select id="rating" name="rating" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+
+                <label for="review">Your Review:</label>
+                <textarea id="review" name="review" placeholder="Write your review here..." rows="4" required></textarea>
+
+                <button type="submit">Submit Review</button>
+            </form>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews">
+            <h2>Customer Reviews</h2>
+
+            <!-- Existing reviews will be displayed here -->
+
+            <div class="review-card">
+                <h3>Shweat srivastav</h3>
+                <p class="rating">Rating: ★★★★★</p>
+                <p class="review-text">The product is great! It's durable and works perfectly as advertised. Highly recommend it!</p>
+            </div>
+            <div class="review-card">
+                <h3>Sagar </h3>
+                <p class="rating">Rating: ★★★☆☆</p>
+                <p class="review-text">The product works fine, but the quality could be improved. It's an okay purchase.</p>
+            </div>
+            <div class="review-card">
+                <h3>Vishu Tyagi</h3>
+                <p class="rating">Rating:  ★★★★☆</p>
+                <p class="review-text">The product is so good</p>
+            </div>
+            <div class="review-card">
+                <h3>Akki Sharma</h3>
+                <p class="rating">Rating:  ★★★★☆</p>
+                <p class="review-text">good maintenance and looking so gorgeous.</p>
+            </div>
+            <div class="review-card">
+                <h3>Rajat shukla</h3>
+                <p class="rating">Rating: ★★★☆☆</p>
+                <p class="review-text">The build quality is premium, with a modern design that attracts a lot of attention.</p>
+            </div>
+            <div class="review-card">
+                <h3>Waris ahmed</h3>
+                <p class="rating">Rating: ★★★☆☆</p>
+                <p class="review-text"> The scooter comes with a large touchscreen display, smartphone connectivity, navigation, .</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 User Reviews. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript to handle review submission
+        document.getElementById("reviewForm").addEventListener("submit", function(event){
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const rating = document.getElementById("rating").value;
+            const reviewText = document.getElementById("review").value;
+
+            const reviewSection = document.querySelector(".reviews");
+
+            // Create a new review card
+            const newReview = document.createElement("div");
+            newReview.classList.add("review-card");
+
+            // Add content to the new review card
+            newReview.innerHTML = `
+                <h3>${name}</h3>
+                <p class="rating">Rating: ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}</p>
+                <p class="review-text">${reviewText}</p>
+            `;
+
+            // Append the new review to the reviews section
+            reviewSection.appendChild(newReview);
+
+            // Reset the form
+            document.getElementById("reviewForm").reset();
+        });
+    </script>
+</body>
+</html>
